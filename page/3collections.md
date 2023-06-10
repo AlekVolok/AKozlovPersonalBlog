@@ -27,6 +27,7 @@ type: page
 
 ## Houdini
 ### Tools
+* [LucasFilm/ILM Houdini Blog/Tools](https://www.notion.so/39c667934daf47a08a025ccf61808806?v=9a2867319b2b426eb4dc516eca8348e3)
 * [Stable-Houdini](https://github.com/stassius/StableHoudini)
 * [MLOPs](https://github.com/Bismuth-Consultancy-BV/MLOPs)
 * [Vegetation Generation Tool for Houdini(space colonization algorithm)](https://github.com/demiaster/treegen)
@@ -36,6 +37,7 @@ type: page
 
 ### Vex
 * [VEX for artists](https://github.com/kiryha/Houdini/wiki/vex-for-artists)
+* [Wrangle Node Examples](https://www.deborahrfowler.com/HoudiniResources/WrangleNodeExamples)
 
 ### Python
 * [Houdini Scripts](https://github.com/JoseZalez/Houdini-scripts)
@@ -45,6 +47,10 @@ type: page
 * [E-Houdini Academy](https://ehoudiniacademy.com/)
 * [CGwiki](https://www.tokeru.com/cgwiki/Main_Page)
 * [Houdini files examples from jhorikawa](https://github.com/jhorikawa/HoudiniHowtos)
+* [Simulated Braided River in Houdini and Unreal](https://80.lv/articles/006sdf-simulating-braided-river-in-houdini/)
+* [Point Cloud Morphing UE4](https://dtf.ru/unrealengine/104008-point-cloud-morphing-fx-na-unreal-engine-4)
+* [Houdini Engine Blog](http://www.rendereverything.com/tag/houdini/)
+
 
 ## Blender
 ### Add-ons
