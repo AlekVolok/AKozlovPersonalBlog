@@ -9,6 +9,8 @@ author: Aleksandr Kozlov
 * content
 {:toc}
 
-Python scripting with volumes in Houdini may be considered an uncommon practice, but it can offer tremendous benefits in various scenarios. In fact, it can even outperform VEX scripting in terms of speed and efficiency.
+Python scripting with volumes in Houdini may be considered an uncommon practice, but it can offer tremendous benefits in various scenarios. In fact, it can even outperform VEX scripting in terms of speed and efficiency. ![Houdini snapshot](/_attachments/test.png)
+
 
 ---
+
