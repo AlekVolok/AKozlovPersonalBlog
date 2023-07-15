@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "hello jekyll!"
-date:   2015-02-10 15:14:54
-categories: jekyll
-tags: jekyll
-excerpt: When the creation of jekyll when the default article, nothing meaningful, I have not deleted, leave a memento of it.
+title:  "Hou to import numpy?"
+date:   2023-07-15 15:14:54
+categories: Houdini
+tags: Houdini Volumes Python Numpy
+excerpt: Python scripting with volumes in Houdini may be considered an uncommon practice, but it can offer tremendous benefits in various scenarios. In fact, it can even outperform VEX scripting in terms of speed and efficiency.
 mathjax: true
 ---
 
