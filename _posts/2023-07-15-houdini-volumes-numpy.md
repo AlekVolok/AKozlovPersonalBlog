@@ -21,7 +21,7 @@ Despite the fact that it is a python library - performance is comparable with VE
 ## Convert Houdini volume to Numpy Array
 
 Houdini volume looks like 3-dimentional array, which is common for numpy. But in fact data is stored as sequence of voxel ids and float values that correspond for each id.
-![](https://raw.githubusercontent.com/AlekVolok/AlekVolok.github.io/main/_attachments//houdini_numpy/voxels_data_attrib.jpg) 
+![](https://raw.githubusercontent.com/AlekVolok/AlekVolok.github.io/main/_attachments/houdini_numpy/voxels_data_attrib.jpg) 
 
 Houdini Python documentation has already fast performant function that gets all voxels data into tuple for future converting it into numpy array.
 [hou.Volume](https://www.sidefx.com/docs/houdini/hom/hou/Volume.html)
@@ -59,20 +59,23 @@ This code converts 3d array to flipbook sheet:
 
 ```
 # Calc 2d image size
-
 import math
 res_2d = int(math.sqrt(vol_res[0] * vol_res[1] * vol_res[2]))
+
+# Create 2d image container
 vol_2d = np.zeros((res_2d, res_2d))
-# np_volume2d = np.reshape(np_volume3d, (res_2d, res_2d), order="A")*255
-for i in range(res2d/vol_res[0]):
-    for j in range(res2d/vol_res[1]):
-        vol_2d[i*vol_res[0]:(i+1)*vol_res[0], i*vol_res[0]:(i+1)*vol_res[0]] = np.volume3d[:,:,(j+i)]
-        
+
+# Fill container with sliced volume data
+for i in range(int(res_2d/vol_res[0])):
+    for j in range(int(res_2d/vol_res[1])):
+        vol_2d[i*vol_res[0]:(i+1)*vol_res[0], j*vol_res[0]:(j+1)*vol_res[0]] = np_volume3d[:,:,(j+i)]
+
+# Preview 2d Image
 from PIL import Image
-np_image = Image.fromarray(vol_2d.astype(np.uint8)*255)
+np_image = Image.fromarray((vol_2d*255).astype(np.uint8))
 np_image.show()
 ```
-
+![Alt text]([../_attachments](https://raw.githubusercontent.com/AlekVolok/AlekVolok.github.io/main/_attachments)/houdini_numpy/slices_volume_preview.jpg)
 
 ## Houdini Heighfields
 
