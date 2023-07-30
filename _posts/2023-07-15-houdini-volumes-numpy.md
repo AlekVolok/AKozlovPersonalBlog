@@ -75,14 +75,8 @@ from PIL import Image
 np_image = Image.fromarray((vol_2d*255).astype(np.uint8))
 np_image.show()
 ```
-![Alt text]([../_attachments](https://raw.githubusercontent.com/AlekVolok/AlekVolok.github.io/main/_attachments)/houdini_numpy/slices_volume_preview.jpg)
+![Alt text](https://raw.githubusercontent.com/AlekVolok/AlekVolok.github.io/main/_attachments/houdini_numpy/slices_volume_preview.jpg)
 
 ## Houdini Heighfields
 
 ## Powerup with common python operations
-
-Python scripting with volumes in Houdini may be considered an uncommon practice, but it can offer tremendous benefits in various scenarios. In fact, it can even outperform VEX scripting in terms of speed and efficiency. ![Houdini snapshot](https://raw.githubusercontent.com/AlekVolok/AlekVolok.github.io/main/_attachments/test.png)
-
-
----
-
