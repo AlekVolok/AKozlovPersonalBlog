@@ -55,6 +55,8 @@ np_volume3d = np_volume.reshape(vol_res)
 ```
 Note that this np array data cannot be stored in geometry. After manipulation on the arraay it should be converted back to attributes or saved somewhere. 
 
+## Convert Numpy Array to picture
+
 This code converts 3d array to flipbook sheet:
 
 ```
@@ -77,6 +79,20 @@ np_image.show()
 ```
 ![Alt text](https://raw.githubusercontent.com/AlekVolok/AlekVolok.github.io/main/_attachments/houdini_numpy/slices_volume_preview.jpg)
 
-## Houdini Heighfields
+```image.show()``` method is for image preview. For saving as disk image:
+```np_image.save("C:/Temp.../image.jpg")```
+
+## Convert Numpy Array Houdini volume
+
+```
+# Create NumpyArray
+
+
+```
+
+## Houdini Heightfields
+
+Houdini Heightfield node is basically a 3D volume with one dimention equal 1.
+Lets say heightfield with size 1000x1000 would be volume with dimentions 1000x1000x1. Each layer (heightfield, mask) is a volume. 
 
 ## Powerup with common python operations
