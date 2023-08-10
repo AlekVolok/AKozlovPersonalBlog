@@ -85,8 +85,27 @@ np_image.show()
 ## Convert Numpy Array Houdini volume
 
 ```
-# Create NumpyArray
+import numpy as np
+node = hou.pwd()
+geo = node.geometry()
 
+# Get first volume
+volume = geo.prims()[0]
+
+# Get volume resolution
+vol_res = volume.resolution()
+
+# Create 3d volume with norm random
+np_volume3d = np.random.normal(0, 1, size=(100, 100, 100))
+
+# Make it 1-dimensional
+np_volume = np_volume3d.flatten().astype(np.float32)
+
+# Convert the NumPy array to a Python list
+voxels = np_volume.tolist()
+
+# Apply voxels data to geometry
+volume.setAllVoxels(voxels)
 
 ```
 
