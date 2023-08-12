@@ -109,6 +109,8 @@ voxels = np_volume.tolist()
 volume.setAllVoxels(voxels)
 ```
 
+![ArrayToVolume](https://raw.githubusercontent.com/AlekVolok/AlekVolok.github.io/main/_attachments/houdini_numpy/array_to_volume.jpg)
+
 ## Houdini Heightfields
 
 Houdini Heightfield node is basically a 3D volume with one dimention equal 1.
