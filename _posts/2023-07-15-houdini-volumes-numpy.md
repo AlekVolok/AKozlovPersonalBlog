@@ -84,6 +84,8 @@ np_image.show()
 
 ## Convert Numpy Array Houdini volume
 
+This code generates numpy array random values and store values to volume:
+
 ```
 import numpy as np
 node = hou.pwd()
@@ -106,7 +108,6 @@ voxels = np_volume.tolist()
 
 # Apply voxels data to geometry
 volume.setAllVoxels(voxels)
-
 ```
 
 ## Houdini Heightfields
