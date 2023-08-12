@@ -99,7 +99,7 @@ vol_res = volume.resolution()
 # Create 3d volume with norm random
 np_volume3d = np.random.normal(0, 1, size=(100, 100, 100))
 
-# Make it 1-dimensional
+# Make it 1-dimensional. Houdini volumes uses float32 and numpy float64. So data needs to be converted.
 np_volume = np_volume3d.flatten().astype(np.float32)
 
 # Convert the NumPy array to a Python list
@@ -111,9 +111,11 @@ volume.setAllVoxels(voxels)
 
 ![ArrayToVolume](https://raw.githubusercontent.com/AlekVolok/AlekVolok.github.io/main/_attachments/houdini_numpy/array_to_volume.jpg)
 
+Looks nice, but not very practical. Since Numpy arrays is just a way of how we can represent a data - we can generate/feed any data we want!
+
 ## Houdini Heightfields
 
-Houdini Heightfield node is basically a 3D volume with one dimention equal 1.
-Lets say heightfield with size 1000x1000 would be volume with dimentions 1000x1000x1. Each layer (heightfield, mask) is a volume. 
+Import multiple pictures tiles and combine them in one piece. In Unreal Engine, for example, there is a way to export height data into for each landscape chunk into .png data. With python's numpy it is possible to grab this data (and event multiple landscape layers) and store it into one heightfield in one go. 
+
 
 ## Powerup with common python operations
