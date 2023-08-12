@@ -28,7 +28,7 @@ Houdini Python documentation has already fast performant function that gets all 
 
 Convert Volume into 3d Numpy Array:
 
-```
+```python
 import numpy as np
 node = hou.pwd()
 geo = node.geometry()
@@ -59,7 +59,7 @@ Note that this np array data cannot be stored in geometry. After manipulation on
 
 This code converts 3d array to flipbook sheet:
 
-```
+```python
 # Calc 2d image size
 import math
 res_2d = int(math.sqrt(vol_res[0] * vol_res[1] * vol_res[2]))
@@ -79,14 +79,13 @@ np_image.show()
 ```
 ![Alt text](https://raw.githubusercontent.com/AlekVolok/AlekVolok.github.io/main/_attachments/houdini_numpy/slices_volume_preview.jpg)
 
-```image.show()``` method is for image preview. For saving as disk image:
-```np_image.save("C:/Temp.../image.jpg")```
+```image.show()``` method is for image preview. For saving as disk image: ```np_image.save("C:/Temp.../image.jpg")```
 
 ## Convert Numpy Array Houdini volume
 
 This code generates numpy array random values and store values to volume:
 
-```
+```python
 import numpy as np
 node = hou.pwd()
 geo = node.geometry()
