@@ -99,7 +99,7 @@ vol_res = volume.resolution()
 # Create 3d volume with norm random
 np_volume3d = np.random.normal(0, 1, size=(100, 100, 100))
 
-# Make it 1-dimensional. Houdini volumes uses float32 and numpy float64. So data needs to be converted.
+# Make it 1-dimensional. Houdini volumes use float32 and numpy float64. So data needs to be converted.
 np_volume = np_volume3d.flatten().astype(np.float32)
 
 # Convert the NumPy array to a Python list
@@ -115,7 +115,50 @@ Looks nice, but not very practical. Since Numpy arrays is just a way of how we c
 
 ## Houdini Heightfields
 
-Import multiple pictures tiles and combine them in one piece. In Unreal Engine, for example, there is a way to export height data into for each landscape chunk into .png data. With python's numpy it is possible to grab this data (and event multiple landscape layers) and store it into one heightfield in one go. 
+Import multiple pictures tiles and combine them in one piece. In Unreal Engine, for example, there is a way to export height data into for each landscape chunk into .png data. With python's numpy it is possible to grab this data (and event multiple landscape layers) and store it into one heightfield in one go.
 
+Exported landscape data from unreal usually looks like that:
+![DataExample](https://raw.githubusercontent.com/AlekVolok/AlekVolok.github.io/main/_attachments/houdini_numpy/exported_data.jpg)
+This code looks to the giving folderpath and combines image tiles into one heightfield object according to unreal's tile naming convention:
 
-## Powerup with common python operations
+```python
+node = hou.pwd()
+geo = node.geometry()
+from pathlib import Path
+import imageio
+import numpy as np
+
+# Define variables
+ls_data_dir = hou.parm("data_dir").eval()
+tiles_x = hou.parm("ls_tiles1").eval()
+tiles_y = hou.parm("ls_tiles2").eval()
+ls_res_x = hou.parm("ls_res1").eval()
+ls_res_y = hou.parm("ls_res2").eval()
+chunk_res_x = int((ls_res_x - 1) / tiles_x)
+chunk_res_y = int((ls_res_y - 1) / tiles_y)
+
+# Height is always the first prim 
+heightfield_height = geo.prims()[0]
+heightfield_resolution = heightfield_height.resolution()
+
+# Create np array canvas to store image data
+canvas2d = np.zeros((heightfield_resolution[0], heightfield_resolution[1]))
+
+# Fill canvas2d with image data
+for file in Path(ls_data_dir).iterdir():
+    if not file.is_file():
+        continue
+    for x in range(tiles_x):
+        for y in range(tiles_y):
+            if f"x{x}_y{y}" in file.name:
+                chunk_img = imageio.imread(file)
+                if chunk_img is not None:
+                    canvas2d[y*chunk_res_y:(y+1)*chunk_res_y, 
+                             x*chunk_res_x:(x+1)*chunk_res_x] = np.array(chunk_img)
+
+# Map imported data to world coords (based on unreal documentation)
+canvas2d = canvas2d/128 - 256
+
+# Store data to heightfield
+heightfield_height.setAllVoxels(tuple(np.transpose(canvas2d).flatten()))
+```
