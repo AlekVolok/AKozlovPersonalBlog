@@ -118,17 +118,19 @@ Looks nice, but not very practical. Since Numpy arrays is just a way of how we c
 Import multiple pictures tiles and combine them in one piece. In Unreal Engine, for example, there is a way to export height data into for each landscape chunk into .png data. With python's numpy it is possible to grab this data (and event multiple landscape layers) and store it into one heightfield in one go.
 
 Exported landscape data from unreal usually looks like that:
+
 ![DataExample](https://raw.githubusercontent.com/AlekVolok/AlekVolok.github.io/main/_attachments/houdini_numpy/exported_data.jpg)
+
 This code looks to the giving folderpath and combines image tiles into one heightfield object according to unreal's tile naming convention:
 
 ```python
-node = hou.pwd()
-geo = node.geometry()
 from pathlib import Path
 import imageio
 import numpy as np
 
 # Define variables
+node = hou.pwd()
+geo = node.geometry()
 ls_data_dir = hou.parm("data_dir").eval()
 tiles_x = hou.parm("ls_tiles1").eval()
 tiles_y = hou.parm("ls_tiles2").eval()
@@ -156,9 +158,16 @@ for file in Path(ls_data_dir).iterdir():
                     canvas2d[y*chunk_res_y:(y+1)*chunk_res_y, 
                              x*chunk_res_x:(x+1)*chunk_res_x] = np.array(chunk_img)
 
-# Map imported data to world coords (based on unreal documentation)
+# Map imported data to world coords (based on Unreal Engine documentation)
 canvas2d = canvas2d/128 - 256
 
 # Store data to heightfield
 heightfield_height.setAllVoxels(tuple(np.transpose(canvas2d).flatten()))
 ```
+![DataExample](https://raw.githubusercontent.com/AlekVolok/AlekVolok.github.io/main/_attachments/houdini_numpy/landscape_to_houdini.jpg)
+
+Despite being written in Python, it exhibits impressive speed, even when compared to VEX! 
+
+The transfer of landscape data from Unreal to Houdini traditionally involves a time-consuming operation, often taking several seconds, and requiring repetition whenever changes are made to the landscape. However, employing this method allows for the selective export of only the essential chunks, significantly streamlining production time.
+
+[Numpy Houdini Examples](https://github.com/AlekVolok/HoudiniExamples/blob/master/numpy_array.hiplc)
