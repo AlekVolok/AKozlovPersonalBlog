@@ -31,6 +31,7 @@ type: page
 * [Stable-Houdini](https://github.com/stassius/StableHoudini)
 * [MLOPs](https://github.com/Bismuth-Consultancy-BV/MLOPs)
 * [Vegetation Generation Tool for Houdini(space colonization algorithm)](https://github.com/demiaster/treegen)
+* [Adam Hakeem data driven procedural tools](https://hakeemadam.info/procedural-tools)
 
 ### HoudiniEngine
 * [Houdini Engine For Unreal API](https://www.sidefx.com/docs/unreal/_public_a_p_i.html)
