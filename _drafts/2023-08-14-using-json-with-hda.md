@@ -10,7 +10,7 @@ Transferring data between Houdini and Unreal is well-known bottleneck. Figuring 
 
 ## What is JSON?
 
-JSON (JavaScript Object Notation) is industry standart of storing data. It means, that is beign supported by lots of softwars
+JSON (JavaScript Object Notation) is industry standart of storing data. It means, that is beign supported by lots of softwarss
 
 It is implemented in C and Fortran, which makes it highly efficient for numerical computations. It leverages optimized, low-level memory operations, which result in faster execution compared to regular Python lists. 
 
