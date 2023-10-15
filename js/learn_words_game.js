@@ -3,6 +3,8 @@ let selectedRight = null;
 let pairs = {};
 
 function checkPair(leftWord, rightWord) {
+    $('.selected').removeClass('selected'); // Remove the yellow highlight from any selected word
+    
     if (pairs[leftWord] === rightWord) {
         $('#leftWords').find(`[data-word="${leftWord}"]`).addClass('correct').off();
         $('#rightWords').find(`[data-word="${rightWord}"]`).addClass('correct').off();
@@ -39,6 +41,7 @@ function loadWords() {
                     checkPair(word, selectedRight);
                 } else {
                     selectedLeft = word;
+                    $(this).addClass('selected'); // Highlight the selected word with yellow
                 }
             });
             $('#leftWords').append(btn);
@@ -51,11 +54,33 @@ function loadWords() {
                     checkPair(selectedLeft, word);
                 } else {
                     selectedRight = word;
+                    $(this).addClass('selected'); // Highlight the selected word with yellow
                 }
             });
             $('#rightWords').append(btn);
         });
     });
+}
+
+function checkPair(leftWord, rightWord) {
+    $('.selected').removeClass('selected'); // Remove the yellow highlight from any selected word
+    
+    if (pairs[leftWord] === rightWord) {
+        $('#leftWords').find(`[data-word="${leftWord}"]`).addClass('correct').off();
+        $('#rightWords').find(`[data-word="${rightWord}"]`).addClass('correct').off();
+
+        if ($('.correct').length === Object.keys(pairs).length * 2) {
+            $('#congratulations').show();  // Display the congratulatory message
+        }
+    } else {
+        $('#leftWords').find(`[data-word="${leftWord}"]`).addClass('incorrect');
+        $('#rightWords').find(`[data-word="${rightWord}"]`).addClass('incorrect');
+        setTimeout(() => {
+            $('.incorrect').removeClass('incorrect');
+        }, 1000);
+    }
+    selectedLeft = null;
+    selectedRight = null;
 }
 
 // Load topics and initialize game
