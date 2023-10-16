@@ -3,6 +3,12 @@ let selectedRight = null;
 let pairs = {};
 let displayedPairs = {}; // Keep track of displayed pairs
 let correctlyGuessedPairs = 0; // Counter for correctly guessed pairs
+let score = 0;
+let mistakes = 0;
+
+let startGame;
+let comboMultiplier = 1;
+let comboCount = 0;
 
 function loadNewSetOfPairs() {
     correctlyGuessedPairs = 0;
@@ -39,19 +45,35 @@ function checkPair(leftWord, rightWord) {
         $('#leftWords').find(`[data-word="${leftWord}"]`).addClass('correct').off();
         $('#rightWords').find(`[data-word="${rightWord}"]`).addClass('correct').off();
 
+        // Update combo count and multiplier
+        comboCount += 1;
+        if (comboCount % 3 === 0) { // every 3 correct answers in a row increases the multiplier
+            comboMultiplier += 1;
+        }
+        score += 10 * comboMultiplier; // Update score using multiplier
+
         if (correctlyGuessedPairs === 10) {
             loadNewSetOfPairs();
         }
     } else {
+        mistakes += 1;
+        score -= 5;
+
+        // Reset combo count and multiplier on mistake
+        comboCount = 0;
+        comboMultiplier = 1;
+
         $('#leftWords').find(`[data-word="${leftWord}"]`).addClass('incorrect');
         $('#rightWords').find(`[data-word="${rightWord}"]`).addClass('incorrect');
         setTimeout(() => {
             $('.incorrect').removeClass('incorrect');
         }, 1000);
     }
+    updateUI(); // Update the UI with the latest score, mistakes, and multiplier
     selectedLeft = null;
     selectedRight = null;
 }
+
 
 function onLeftClick(word) {
     $('.selected').removeClass('selected'); // Ensure only one word is highlighted
@@ -82,6 +104,11 @@ function loadWords() {
         displayedPairs = {};
         loadNewSetOfPairs();
     });
+
+}function updateUI() {
+    document.getElementById('score').innerText = `Score: ${score}`;
+    document.getElementById('mistakes').innerText = `Mistakes: ${mistakes}`;
+    document.getElementById('multiplier').innerText = `Multiplier: x${comboMultiplier}`;
 }
 
 // Load topics and initialize game
