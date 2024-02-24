@@ -21,7 +21,7 @@
 button {
     appearance: none;
     border-radius: 6px;
-    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 2px 0, rgba(255, 255, 255, 0.25) 0 2px 0 inset;
     cursor: pointer;
     display: inline-block;
     font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
@@ -38,7 +38,7 @@ button {
 }
 button.correct {
     background-color: #90EE90;
-    color: #ffffff;
+    color: #24292E;
 }
 button.incorrect {
     background-color: #F08080;
