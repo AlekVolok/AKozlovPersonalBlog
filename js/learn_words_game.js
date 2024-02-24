@@ -116,6 +116,7 @@ function loadWords() {
     document.getElementById('score').innerText = `Score: ${score}`;
     document.getElementById('mistakes').innerText = `Mistakes: ${mistakes}`;
     document.getElementById('multiplier').innerText = `Multiplier: x${comboMultiplier}`;
+    updateUI();
 }
 
 // Load topics and initialize game
