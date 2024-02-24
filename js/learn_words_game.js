@@ -27,22 +27,18 @@ function loadNewSetOfPairs() {
         });
         $('#leftWords').append(btn);
         displayedPairs[word] = true;
-
+    
         // Add audio element for pronunciation
-        const audio = $(`<audio src="audio/${word}.mp3" controls></audio>`);
+        const audio = $(`<audio src="audio/${word}.mp3" controls style="width: 100px;"></audio>`);
         $('#leftWords').append(audio);
     });
-
+    
     rightWords.forEach(word => {
         const btn = $(`<button data-word="${word}">${word}</button>`);
         btn.click(function() {
             onRightClick(word);
         });
         $('#rightWords').append(btn);
-
-        // Add audio element for pronunciation
-        const audio = $(`<audio src="audio/${word}.mp3" controls></audio>`);
-        $('#rightWords').append(audio);
     });
 }
 
