@@ -27,6 +27,10 @@ function loadNewSetOfPairs() {
         });
         $('#leftWords').append(btn);
         displayedPairs[word] = true;
+
+        // Add audio element for pronunciation
+        const audio = $(`<audio src="audio/${word}.mp3" controls></audio>`);
+        $('#leftWords').append(audio);
     });
 
     rightWords.forEach(word => {
@@ -35,6 +39,10 @@ function loadNewSetOfPairs() {
             onRightClick(word);
         });
         $('#rightWords').append(btn);
+
+        // Add audio element for pronunciation
+        const audio = $(`<audio src="audio/${word}.mp3" controls></audio>`);
+        $('#rightWords').append(audio);
     });
 }
 
