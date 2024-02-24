@@ -9,13 +9,14 @@ let mistakes = 0;
 let startGame;
 let comboMultiplier = 1;
 let comboCount = 0;
+numberRows = 8;
 
 function loadNewSetOfPairs() {
     correctlyGuessedPairs = 0;
     $('#leftWords, #rightWords').empty();
 
     const remainingPairsList = Object.entries(pairs).filter(pair => !displayedPairs[pair[0]]);
-    const samplePairs = remainingPairsList.sort(() => 0.5 - Math.random()).slice(0, 10);
+    const samplePairs = remainingPairsList.sort(() => 0.5 - Math.random()).slice(0, numberRows);
     const leftWords = samplePairs.map(pair => pair[0]);
     const rightWords = samplePairs.map(pair => pair[1]).sort(() => Math.random() - 0.5); // Shuffle
 
@@ -50,9 +51,9 @@ function checkPair(leftWord, rightWord) {
         if (comboCount % 3 === 0) { // every 3 correct answers in a row increases the multiplier
             comboMultiplier += 1;
         }
-        score += 10 * comboMultiplier; // Update score using multiplier
+        score += numberRows * comboMultiplier; // Update score using multiplier
 
-        if (correctlyGuessedPairs === 10) {
+        if (correctlyGuessedPairs === numberRows) {
             loadNewSetOfPairs();
         }
     } else {

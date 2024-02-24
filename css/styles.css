@@ -37,15 +37,15 @@ button {
     border: 1px solid rgba(27, 31, 35, 0.15);
 }
 button.correct {
-    background-color: green;
+    background-color: #90EE90;
     color: #ffffff;
 }
 button.incorrect {
-    background-color: red;
+    background-color: #F08080;
     color: #ffffff;
 }
 button.selected {
-    background-color: yellow;
+    background-color: #FFFACD;
     color: #24292E;
 }
 button:hover {
