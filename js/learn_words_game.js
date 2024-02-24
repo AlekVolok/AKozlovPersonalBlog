@@ -13,7 +13,7 @@ numberRows = 8;
 
 function loadNewSetOfPairs() {
     correctlyGuessedPairs = 0;
-    $('#leftWords, #rightWords').empty();
+    $('#leftWords, #rightWords, #audioButtons').empty();
 
     const remainingPairsList = Object.entries(pairs).filter(pair => !displayedPairs[pair[0]]);
     const samplePairs = remainingPairsList.sort(() => 0.5 - Math.random()).slice(0, numberRows);
@@ -28,9 +28,11 @@ function loadNewSetOfPairs() {
         $('#leftWords').append(btn);
         displayedPairs[word] = true;
     
-        // Add audio element for pronunciation
-        const audio = $(`<audio src="audio/${word}.mp3" controls style="width: 100px;"></audio>`);
-        $('#leftWords').append(audio);
+        // Add audio button for pronunciation
+        const audioBtn = $(`<button onclick="document.getElementById('${word}').play()" style="width: 30px; height: 30px; padding: 0; border: none; background: none;"><img src="volume_icon.png" alt="Play ${word}" style="width: 100%; height: 100%;"></button>`);
+        $('#audioButtons').append(audioBtn);
+        const audio = $(`<audio id="${word}" src="audio/${word}.mp3" style="display: none;"></audio>`);
+        $('#audioButtons').append(audio);
     });
     
     rightWords.forEach(word => {
