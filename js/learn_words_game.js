@@ -38,6 +38,8 @@ function loadNewSetOfPairs() {
         btn.click(() => onRightClick(word));
         $rightWords.append(btn);
     });
+
+    updateUI(); // Ensure UI is updated when new pairs are loaded
 }
 
 function checkPair(leftWord, rightWord) {
@@ -47,7 +49,7 @@ function checkPair(leftWord, rightWord) {
         updateCorrect(leftWord, rightWord);
         score += numberRows * comboMultiplier;
         if (correctlyGuessedPairs === numberRows) {
-            loadNewSetOfPairs();
+            loadNewSetOfPairs(); // Load new set and update UI after loading
         }
     } else {
         mistakes += 1;
@@ -56,9 +58,7 @@ function checkPair(leftWord, rightWord) {
         comboMultiplier = 1;
         updateIncorrect(leftWord, rightWord);
     }
-    updateUI();
-    selectedLeft = null;
-    selectedRight = null;
+    updateUI(); // Update UI after each attempt to check a pair
 }
 
 function updateCorrect(leftWord, rightWord) {
