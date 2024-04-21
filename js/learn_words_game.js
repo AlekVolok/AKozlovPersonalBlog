@@ -99,6 +99,9 @@ function onRightClick(word) {
 }
 
 function loadWords() {
+    // Reset score
+    score = 0;
+
     const topic = $('#topicSelect').val();
     $.getJSON(`words_database/topics/${topic}.json`, function(data) {
         pairs = data;
