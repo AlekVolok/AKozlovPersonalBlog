@@ -125,6 +125,13 @@ function updateUI() {
     } else {
         scoreElement.style.color = '#90EE90';
     }
+    // Get the current color of the score element
+    let currentColor = window.getComputedStyle(scoreElement).color;
+
+    // If the current color is different from the new color, update the color
+    if (currentColor !== newColor) {
+        scoreElement.style.color = newColor;
+    }
 }
 
 $(document).ready(function() {
