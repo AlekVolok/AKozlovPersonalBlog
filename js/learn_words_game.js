@@ -110,9 +110,18 @@ function loadWords() {
 }
 
 function updateUI() {
-    document.getElementById('score').innerText = `Score: ${score}`;
+    let scoreElement = document.getElementById('score');
+    scoreElement.innerText = `Score: ${score}`;
     document.getElementById('mistakes').innerText = `Mistakes: ${mistakes}`;
     document.getElementById('multiplier').innerText = `Multiplier: x${comboMultiplier}`;
+    // Change color based on score
+    if (score < 0) {
+        scoreElement.style.color = '#F08080';
+    } else if (score >= 0 && score < 1000) {
+        scoreElement.style.color = '#FFFACD';
+    } else {
+        scoreElement.style.color = '#90EE90';
+    }
 }
 
 $(document).ready(function() {
